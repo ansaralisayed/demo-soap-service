@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.example.com/demo/soap/products"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		   xmlns:prod="http://www.example.com/demo/soap/product"
+		   xmlns:cat="http://www.example.com/demo/soap/category"
+           targetNamespace="http://www.example.com/demo/soap/products" elementFormDefault="qualified">
+ 
+ 	<xs:import schemaLocation="categorySchema.xsd" namespace="http://www.example.com/demo/soap/category"/>
+ 	<xs:import schemaLocation="productSchema.xsd" namespace="http://www.example.com/demo/soap/product"/>
+ 
+    <xs:element name="getProductsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="customerId" type="xs:string"/>
+                <xs:element name="category" type="cat:category"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+ 
+    <xs:element name="getProductsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="products" minOccurs="0" maxOccurs="unbounded" type="prod:product"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+ 
+</xs:schema>
